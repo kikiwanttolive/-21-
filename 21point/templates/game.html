@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21ポイント</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>21ポイント</h1>
+        <div class="cards">
+            <h2>プレイヤーのカード</h2>
+            <div class="hand">
+                {% for card in player_hand %}
+                    <div class="card">{{ card['value'] }}{{ card['suit'] }}</div>
+                {% endfor %}
+            </div>
+            <p>プレイヤーのポイント: {{ player_score }}</p>
+        </div>
+
+        <div class="cards">
+            <h2>ディーラーのカード</h2>
+            <div class="hand">
+                {% for card in dealer_hand %}
+                    <div class="card">{{ card['value'] }}{{ card['suit'] }}</div>
+                {% endfor %}
+            </div>
+            <p>ディーラーのポイント: {{ dealer_score }}</p>
+        </div>
+
+        <div class="actions">
+            <a class="button" href="{{ url_for('hit') }}">挑戦</a>
+            <a class="button" href="{{ url_for('stand') }}">ストップ</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21ポイントーー結果</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ゲーム結果</h1>
+        <p>プレイヤーのスコア: {{ player_score }}</p>
+        <p>ディーラーのスコア: {{ dealer_score }}</p>
+
+        {% if player_score > 21 %}
+            <p>残念TTプレイヤーが21ポイントを超えた、ディーラーの勝ち！</p>
+        {% elif dealer_score > 21 %}
+            <p>おめでとう！ディーラーが21ポイントを超えた、プレイヤーの勝ち！</p>
+        {% elif player_score > dealer_score %}
+            <p>プレイヤーの勝ち！</p>
+        {% elif player_score < dealer_score %}
+            <p>ディーラーの勝ち！</p>
+        {% else %}
+            <p>引き分け！</p>
+        {% endif %}
+
+        <a class="button" href="{{ url_for('start') }}">もう一度</a>
+    </div>
+</body>
+</html>
